@@ -1,0 +1,62 @@
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.animation.Animator;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
+
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
+
+import java.util.Random;
+
+public class MainActivity extends AppCompatActivity {
+
+    TextView textView,textView2;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        textView=findViewById(R.id.text_hello);
+        textView2=findViewById(R.id.text_hello2);
+    }
+
+    public void baslat(View view) {
+
+        Random random=new Random();
+
+        int ratgeleIndis=random.nextInt(28);
+
+        Animasyonlar.yaziAnimasyonu(textView,ratgeleIndis);
+
+
+    }
+
+    public void baslat2(View view) {
+
+        YoYo.with(Techniques.Shake).duration(2000).withListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animator) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animator) {
+
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animator) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animator) {
+
+            }
+        }).
+                playOn(textView2);
+    }
+}
